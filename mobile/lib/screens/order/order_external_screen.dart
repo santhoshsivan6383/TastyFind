@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/rating_badge.dart';
 import '../../widgets/price_tag.dart';
+import '../../widgets/tasty_image.dart';
 import '../../providers/food_providers.dart';
 
 class OrderExternalScreen extends ConsumerWidget {
@@ -81,16 +82,12 @@ class OrderExternalScreen extends ConsumerWidget {
                 ),
                 child: Row(
                   children: [
-                    ClipRRect(
+                    TastyImage(
+                      imageUrl: restaurant?.coverImageUrl,
+                      width: 58,
+                      height: 58,
                       borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        width: 58,
-                        height: 58,
-                        color: AppColors.backgroundLight,
-                        child: restaurant?.coverImageUrl != null
-                            ? Image.network(restaurant!.coverImageUrl!, fit: BoxFit.cover)
-                            : const Icon(Icons.restaurant, color: AppColors.textPlaceholder),
-                      ),
+                      fallbackAsset: 'assets/images/restaurant_1.jpg',
                     ),
                     const SizedBox(width: 14),
                     Expanded(

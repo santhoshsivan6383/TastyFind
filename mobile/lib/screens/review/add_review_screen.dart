@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/primary_button.dart';
+import '../../widgets/tasty_image.dart';
 import '../../providers/food_providers.dart';
 
 class AddReviewScreen extends ConsumerStatefulWidget {
@@ -106,16 +107,11 @@ class _AddReviewScreenState extends ConsumerState<AddReviewScreen> {
                       ),
                       child: Row(
                         children: [
-                          ClipRRect(
+                          TastyImage(
+                            imageUrl: dish?.imageUrl,
+                            width: 54,
+                            height: 54,
                             borderRadius: BorderRadius.circular(10),
-                            child: Container(
-                              width: 54,
-                              height: 54,
-                              color: AppColors.surfaceWhite,
-                              child: dish?.imageUrl != null
-                                  ? Image.network(dish!.imageUrl!, fit: BoxFit.cover)
-                                  : const Icon(Icons.fastfood, color: AppColors.textPlaceholder),
-                            ),
                           ),
                           const SizedBox(width: 12),
                           Expanded(

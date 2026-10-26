@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/dish.dart';
 import '../theme/app_colors.dart';
 import 'rating_badge.dart';
+import 'tasty_image.dart';
 
 class DishCard extends StatelessWidget {
   final Dish dish;
@@ -48,24 +49,11 @@ class DishCard extends StatelessWidget {
                 // Dish thumbnail with optional rank badge
                 Stack(
                   children: [
-                    ClipRRect(
+                    TastyImage(
+                      imageUrl: dish.imageUrl,
+                      width: 86,
+                      height: 86,
                       borderRadius: BorderRadius.circular(12),
-                      child: Container(
-                        width: 86,
-                        height: 86,
-                        color: AppColors.backgroundLight,
-                        child: dish.imageUrl != null
-                            ? Image.network(
-                                dish.imageUrl!,
-                                fit: BoxFit.cover,
-                                errorBuilder: (ctx, _, __) => const Center(
-                                  child: Icon(Icons.fastfood_rounded, color: AppColors.textPlaceholder, size: 30),
-                                ),
-                              )
-                            : const Center(
-                                child: Icon(Icons.fastfood_rounded, color: AppColors.textPlaceholder, size: 30),
-                              ),
-                      ),
                     ),
                     if (dish.rank != null)
                       Positioned(

@@ -14,8 +14,8 @@ class SplashScreen extends StatelessWidget {
         children: [
           // Dark appetizing food background image with gradient overlay
           Positioned.fill(
-            child: Image.network(
-              'https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80',
+            child: Image.asset(
+              'assets/images/splash_bg.jpg',
               fit: BoxFit.cover,
               errorBuilder: (_, __, ___) => Container(color: AppColors.deepCharcoal),
             ),

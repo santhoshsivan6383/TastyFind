@@ -6,6 +6,7 @@ import '../../theme/app_colors.dart';
 import '../../widgets/rating_badge.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/feedback_widgets.dart';
+import '../../widgets/tasty_image.dart';
 import '../../providers/food_providers.dart';
 
 class RestaurantDetailsScreen extends ConsumerWidget {
@@ -87,13 +88,11 @@ class RestaurantDetailsScreen extends ConsumerWidget {
                   ),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
-                  background: restaurant.coverImageUrl != null
-                      ? Image.network(
-                          restaurant.coverImageUrl!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Container(color: AppColors.deepCharcoal),
-                        )
-                      : Container(color: AppColors.deepCharcoal),
+                  background: TastyImage(
+                    imageUrl: restaurant.coverImageUrl,
+                    fit: BoxFit.cover,
+                    fallbackAsset: 'assets/images/restaurant_1.jpg',
+                  ),
                 ),
               ),
 

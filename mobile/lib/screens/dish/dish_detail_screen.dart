@@ -5,6 +5,7 @@ import '../../theme/app_colors.dart';
 import '../../widgets/rating_badge.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/feedback_widgets.dart';
+import '../../widgets/tasty_image.dart';
 import '../../providers/food_providers.dart';
 
 class DishDetailScreen extends ConsumerWidget {
@@ -61,13 +62,10 @@ class DishDetailScreen extends ConsumerWidget {
                       ),
                     ],
                     flexibleSpace: FlexibleSpaceBar(
-                      background: dish.imageUrl != null
-                          ? Image.network(
-                              dish.imageUrl!,
-                              fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) => Container(color: AppColors.deepCharcoal),
-                            )
-                          : Container(color: AppColors.deepCharcoal),
+                      background: TastyImage(
+                        imageUrl: dish.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
 
@@ -381,10 +379,12 @@ class DishDetailScreen extends ConsumerWidget {
               CircleAvatar(
                 radius: 14,
                 backgroundColor: AppColors.primaryOrangeLight,
-                backgroundImage: rev.userAvatar != null ? NetworkImage(rev.userAvatar!) : null,
-                child: rev.userAvatar == null
-                    ? Text(rev.userName[0], style: const TextStyle(fontSize: 12, color: AppColors.primaryOrange))
-                    : null,
+                foregroundImage: rev.userAvatar != null ? NetworkImage(rev.userAvatar!) : null,
+                onForegroundImageError: null,
+                child: Text(
+                  rev.userName.isNotEmpty ? rev.userName[0].toUpperCase() : 'U',
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.primaryOrange),
+                ),
               ),
               const SizedBox(width: 8),
               Expanded(

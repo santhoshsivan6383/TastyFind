@@ -7,6 +7,7 @@ import '../../widgets/category_chip.dart';
 import '../../widgets/search_bar_widget.dart';
 import '../../widgets/restaurant_card.dart';
 import '../../widgets/feedback_widgets.dart';
+import '../../widgets/tasty_image.dart';
 import '../../providers/food_providers.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -182,13 +183,10 @@ class HomeScreen extends ConsumerWidget {
                       top: 0,
                       bottom: 0,
                       width: 150,
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.horizontal(right: Radius.circular(18)),
-                        child: Image.network(
-                          'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=600&q=80',
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => const SizedBox(),
-                        ),
+                      child: const TastyImage(
+                        imageUrl: 'assets/images/dosa.jpg',
+                        fit: BoxFit.cover,
+                        borderRadius: BorderRadius.horizontal(right: Radius.circular(18)),
                       ),
                     ),
                     Padding(
@@ -310,16 +308,11 @@ class HomeScreen extends ConsumerWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipRRect(
+                              TastyImage(
+                                imageUrl: dish.imageUrl,
+                                height: 95,
+                                width: double.infinity,
                                 borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                                child: Container(
-                                  height: 95,
-                                  width: double.infinity,
-                                  color: AppColors.backgroundLight,
-                                  child: dish.imageUrl != null
-                                      ? Image.network(dish.imageUrl!, fit: BoxFit.cover)
-                                      : const Icon(Icons.fastfood, color: AppColors.textPlaceholder),
-                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),

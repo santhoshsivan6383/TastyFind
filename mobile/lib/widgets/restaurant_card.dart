@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/restaurant.dart';
 import '../theme/app_colors.dart';
 import 'rating_badge.dart';
+import 'tasty_image.dart';
 
 class RestaurantCard extends StatelessWidget {
   final Restaurant restaurant;
@@ -45,24 +46,12 @@ class RestaurantCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ClipRRect(
+                TastyImage(
+                  imageUrl: restaurant.coverImageUrl,
+                  width: 76,
+                  height: 76,
                   borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    width: 76,
-                    height: 76,
-                    color: AppColors.backgroundLight,
-                    child: restaurant.coverImageUrl != null
-                        ? Image.network(
-                            restaurant.coverImageUrl!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (ctx, _, __) => const Center(
-                              child: Icon(Icons.restaurant, color: AppColors.textPlaceholder, size: 28),
-                            ),
-                          )
-                        : const Center(
-                            child: Icon(Icons.restaurant, color: AppColors.textPlaceholder, size: 28),
-                          ),
-                  ),
+                  fallbackAsset: 'assets/images/restaurant_1.jpg',
                 ),
                 const SizedBox(width: 14),
                 Expanded(

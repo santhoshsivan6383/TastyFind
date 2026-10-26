@@ -5,6 +5,7 @@ import '../../theme/app_colors.dart';
 import '../../widgets/rating_badge.dart';
 import '../../widgets/price_tag.dart';
 import '../../widgets/feedback_widgets.dart';
+import '../../widgets/tasty_image.dart';
 import '../../providers/food_providers.dart';
 import '../../models/dish.dart';
 
@@ -129,20 +130,11 @@ class _MenuDishListScreenState extends ConsumerState<MenuDishListScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // Dish thumbnail
-                ClipRRect(
+                TastyImage(
+                  imageUrl: dish.imageUrl,
+                  width: 76,
+                  height: 76,
                   borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    width: 76,
-                    height: 76,
-                    color: AppColors.backgroundLight,
-                    child: dish.imageUrl != null
-                        ? Image.network(
-                            dish.imageUrl!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => const Icon(Icons.fastfood, color: AppColors.textPlaceholder),
-                          )
-                        : const Icon(Icons.fastfood, color: AppColors.textPlaceholder),
-                  ),
                 ),
                 const SizedBox(width: 14),
 

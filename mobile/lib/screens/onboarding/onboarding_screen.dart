@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/primary_button.dart';
+import '../../widgets/tasty_image.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -18,17 +19,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     {
       'title': 'Discover the best food, not just popular ones.',
       'subtitle': 'We show you the highest rated dishes in your town, with real reviews, prices and ordering options.',
-      'image': 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=800&q=80',
+      'image': 'assets/images/onboarding_1.jpg',
     },
     {
       'title': 'Dish-Specific Rankings.',
       'subtitle': 'Compare exact dishes across different restaurants based on Bayesian ratings and best value scores.',
-      'image': 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&q=80',
+      'image': 'assets/images/onboarding_2.jpg',
     },
     {
       'title': 'Order Seamlessly via Swiggy & Zomato.',
       'subtitle': 'Browse verified menus and jump directly to your preferred delivery platform in one tap.',
-      'image': 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',
+      'image': 'assets/images/onboarding_3.jpg',
     },
   ];
 
@@ -85,18 +86,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                             ],
                           ),
-                          child: ClipRRect(
+                          child: TastyImage(
+                            imageUrl: page['image'],
+                            width: double.infinity,
+                            height: 250,
                             borderRadius: BorderRadius.circular(20),
-                            child: Image.network(
-                              page['image']!,
-                              fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) => Container(
-                                color: AppColors.primaryOrangeLight,
-                                child: const Center(
-                                  child: Icon(Icons.fastfood_rounded, color: AppColors.primaryOrange, size: 60),
-                                ),
-                              ),
-                            ),
                           ),
                         ),
                         const SizedBox(height: 36),

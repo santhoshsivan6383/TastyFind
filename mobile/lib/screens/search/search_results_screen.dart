@@ -6,6 +6,7 @@ import '../../widgets/bottom_nav_bar.dart';
 import '../../widgets/search_bar_widget.dart';
 import '../../widgets/restaurant_card.dart';
 import '../../widgets/feedback_widgets.dart';
+import '../../widgets/tasty_image.dart';
 import '../../providers/food_providers.dart';
 import '../../models/dish.dart';
 import '../../models/restaurant.dart';
@@ -151,16 +152,11 @@ class _SearchResultsScreenState extends ConsumerState<SearchResultsScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    ClipRRect(
+                                    TastyImage(
+                                      imageUrl: dish.imageUrl,
+                                      height: 80,
+                                      width: double.infinity,
                                       borderRadius: const BorderRadius.vertical(top: Radius.circular(14)),
-                                      child: Container(
-                                        height: 80,
-                                        width: double.infinity,
-                                        color: AppColors.backgroundLight,
-                                        child: dish.imageUrl != null
-                                            ? Image.network(dish.imageUrl!, fit: BoxFit.cover)
-                                            : const Icon(Icons.fastfood, color: AppColors.textPlaceholder),
-                                      ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(7),

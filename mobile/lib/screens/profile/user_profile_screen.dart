@@ -44,9 +44,11 @@ class UserProfileScreen extends ConsumerWidget {
                   const CircleAvatar(
                     radius: 32,
                     backgroundColor: AppColors.primaryOrangeLight,
-                    backgroundImage: NetworkImage(
+                    foregroundImage: NetworkImage(
                       'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&q=80',
                     ),
+                    onForegroundImageError: null,
+                    child: Icon(Icons.person_rounded, color: AppColors.primaryOrange, size: 36),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
