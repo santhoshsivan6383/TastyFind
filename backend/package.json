@@ -1,0 +1,32 @@
+{
+  "name": "tastyfind-backend",
+  "version": "1.0.0",
+  "description": "TastyFind Food Discovery REST API with Bayesian Dish Rankings",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:migrate": "node src/db/migrate.js",
+    "db:seed": "node src/db/seed.js",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "keywords": [
+    "tastyfind",
+    "food-discovery",
+    "bayesian-ranking",
+    "express",
+    "mysql"
+  ],
+  "author": "TastyFind Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
+  }
+}

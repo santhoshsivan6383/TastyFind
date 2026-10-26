@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TastyFind — Mobile App Live Build & Interactive Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Simulator Bar -->
+  <header class="sim-header">
+    <div class="sim-brand">
+      <div class="sim-logo">🍲</div>
+      <div>
+        <div class="sim-title">TastyFind Mobile Simulator</div>
+        <div class="sim-subtitle">100% Standalone Front-End Build (Pure Dummy Data Mode)</div>
+      </div>
+    </div>
+
+    <!-- Quick Jump to Any of the 18 Screens -->
+    <div class="screen-selector-container">
+      <label for="screenSelect">Jump to Screen:</label>
+      <select id="screenSelect" onchange="jumpToScreen(this.value)">
+        <option value="1">1. Splash Screen</option>
+        <option value="2">2. Onboarding</option>
+        <option value="3">3. Location Permission</option>
+        <option value="4" selected>4. Home Screen</option>
+        <option value="5">5. Search Results</option>
+        <option value="6">6. Dish-Specific Rankings</option>
+        <option value="7">7. Restaurant Details</option>
+        <option value="8">8. Restaurant Menu</option>
+        <option value="9">9. Dish Detail</option>
+        <option value="10">10. Filter Options</option>
+        <option value="11">11. Filtered Results</option>
+        <option value="12">12. Order via Swiggy/Zomato</option>
+        <option value="13">13. Saved / Wishlist</option>
+        <option value="14">14. User Profile</option>
+        <option value="15">15. Add Review</option>
+        <option value="16">16. Order Redirect Confirmation</option>
+        <option value="17">17. Notifications</option>
+        <option value="18">18. Settings</option>
+      </select>
+    </div>
+
+    <div class="sim-actions">
+      <button class="btn-tool" onclick="resetToHome()">🏠 Home</button>
+      <button class="btn-tool" onclick="toggleTheme()">🌓 Dark Mode</button>
+      <button class="btn-build" onclick="showBuildInfo()">📦 Build Info</button>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container with Mobile Device Frame -->
+  <main class="sim-viewport">
+    
+    <div class="device-frame" id="deviceFrame">
+      <!-- Phone Speaker & Notch / Dynamic Island -->
+      <div class="device-header-notch">
+        <div class="device-time" id="deviceTime">9:41</div>
+        <div class="device-island"></div>
+        <div class="device-icons">
+          <span>📶</span>
+          <span>5G</span>
+          <span>🔋</span>
+        </div>
+      </div>
+
+      <!-- App Viewport (Where screens render) -->
+      <div class="app-container" id="appContainer">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Bottom Home Indicator -->
+      <div class="device-home-bar"></div>
+    </div>
+
+    <!-- Quick Info Panel -->
+    <aside class="info-sidebar">
+      <div class="info-card">
+        <h3>TastyFind Features</h3>
+        <p class="tagline">"Better Food, Better Choices, Same You, But Happier"</p>
+        <ul class="feature-bullets">
+          <li><strong>Dish-Specific Rankings:</strong> Individual dishes ranked by Bayesian score (Masala Dosa, Biryani, Bun Parotta, etc.).</li>
+          <li><strong>Zero-Backend Mode:</strong> High-fidelity local dummy data embedded directly in the frontend app.</li>
+          <li><strong>Direct Ordering:</strong> Deep link redirection to verified Swiggy & Zomato listings.</li>
+          <li><strong>Interactive Flow:</strong> Full navigation across all 18 screens with state persistence.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Quick Navigation Flow</h3>
+        <div class="flow-chips">
+          <span class="flow-chip" onclick="jumpToScreen(1)">1. Splash</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(2)">2. Onboard</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(3)">3. Location</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(4)">4. Home</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(5)">5. Search</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(6)">6. Rankings</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(7)">7. Restaurant</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(9)">9. Dish Detail</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(12)">12. Order</span> ➔
+          <span class="flow-chip" onclick="jumpToScreen(16)">16. Redirect</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Flutter APK Build Command</h3>
+        <div class="code-box">
+          <code>cd mobile<br>flutter pub get<br>flutter build apk --release</code>
+        </div>
+        <p class="small-text">Generates ready-to-install Android APK in <code>build/app/outputs/flutter-apk/</code></p>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
